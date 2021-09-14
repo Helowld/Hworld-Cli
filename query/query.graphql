@@ -1,0 +1,86 @@
+query GetFile($fileName: String!){
+   repository(name: "Hello-World", owner: "Helowld") {
+     defaultBranchRef {
+       target {
+         ... on Commit {
+           history(first: 1) {
+             nodes {
+               file(path: $fileName) {
+                 object {
+                   ... on Blob {
+                     text
+                   }
+                 }
+               }
+             }
+           }
+        }
+       }
+     }
+   }
+
+}
+
+############################ from example
+
+# query GetUser($repositoryFirst: Int!, $languageFirst: Int!) {
+#     viewer {
+#         id
+#         name
+#         repositories(first: $repositoryFirst, orderBy: {field: CREATED_AT, direction: DESC}) {
+#             nodes {
+#                 id
+#                 name
+#                 languages(first: $languageFirst) {
+#                     nodes {
+#                         ...LanguageFragment
+#                     }
+#                 }
+#             }
+#         }
+#     }
+# }
+
+# fragment LanguageFragment on Language {
+#     id
+#     name
+# }
+
+query GetNode($id: ID!) {
+    node(id: $id) {
+        id
+        ... on Repository {
+            id
+            name
+        }
+        ... on Reaction {
+            id
+            user {
+                id
+
+            }
+        }
+    }
+}
+
+# mutation AddStar($input: AddStarInput!) {
+#     addStar(input: $input) {
+#         starrable {
+#             id
+#             viewerHasStarred
+#             ... on Repository {
+#                 id
+#                 name
+#             }
+#         }
+#     }
+# }
+
+# query GetNode2($id: ID!) {
+#     node(id: $id) {
+#         ... on Release {
+#             id
+#             name
+#         }
+#     }
+# }
