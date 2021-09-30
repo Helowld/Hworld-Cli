@@ -42,9 +42,6 @@ Just install the binary to get started.
 Have a intrest in Thirukkural.
 
 ### Installation
-#### From binaries
-
-1. Download binary from releases if pre-built binaries suites you [Releases](https://github.com/rustiever/thirukkural_cli/releases)
 #### To build from source 
 2. Clone the repo
 ```sh
