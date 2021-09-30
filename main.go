@@ -20,26 +20,3 @@ import "github.com/Helowld/Hworld-Cli/cmd"
 func main() {
 	cmd.Execute()
 }
-
-////// gqgenc approach
-
-// token := os.Getenv("GITHUB_TOKEN")
-// ctx := context.Background()
-// githubClient := &gen.Client{
-// 	Client: clientv2.NewClient(http.DefaultClient, "https://api.github.com/graphql", func(ctx context.Context, req *http.Request, gqlInfo *clientv2.GQLRequestInfo, res interface{}, next clientv2.RequestInterceptorFunc) error {
-// 		req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
-
-// 		return next(ctx, req, gqlInfo, res)
-// 	}),
-// }
-// getUser, err := githubClient.GetFile(ctx, "hello_world.c")
-// if err != nil {
-// 	if handledError, ok := err.(*client.ErrorResponse); ok {
-// 		fmt.Fprintf(os.Stderr, "handled error: %s\n", handledError.Error())
-// 	} else {
-// 		fmt.Fprintf(os.Stderr, "unhandled error: %s\n", err.Error())
-// 	}
-// 	os.Exit(1)
-// }
-
-// fmt.Printf("getUser: %v\n", *getUser.Repository.DefaultBranchRef.Target.History.Nodes[0].File.Object.Text)
